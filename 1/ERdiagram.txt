@@ -1,0 +1,62 @@
+@startuml
+
+title VetPet ER diagram
+
+
+Entity pet {
+  id PK : bigint
+  name : varchar 64
+  age : int
+  vet_cvr FK : varchar 16
+}
+
+Entity cat {
+  pet_id FK : bigint
+  life_count : int
+}
+
+Entity dog {
+  pet_id FK : bigint
+  bark_pitch : varchar 2
+}
+
+Entity vet {
+  cvr PK : varchar 16
+  name : varchar 64
+  phone : varchar 16
+  address_id FK : bigint
+}   
+
+Entity address {
+  id PK : bigint
+  street : varchar 64
+  city_zip FK : int
+}
+
+Entity city {
+  zip PK : int
+  name : varchar 64
+}
+
+Entity caretaker {
+  id PK : bigint
+  name : varchar 64
+  phone : varchar 16
+  address_id FK : bigint
+}
+
+Entity caretaker_pet {
+  caretaker_id FK : bigint
+  pet_id FK : bigint
+}
+
+pet ||--o{ cat
+pet ||--o{ dog
+vet ||--|{ pet
+vet -- address
+city ||--|{ address
+caretaker }|--|| address
+caretaker ||--|{ caretaker_pet
+pet ||--|{ caretaker_pet
+
+@enduml
