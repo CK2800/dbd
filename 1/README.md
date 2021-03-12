@@ -17,4 +17,4 @@ Procedure til indsættelse af nye data i pets, cats og dogs tabellerne oprettes 
 Brugerrettigheder tildeles i [users_and_rights.sql](users_and_rights.sql)
 
 ##### Interface implementation
-Applikationen findes i [vetapp](/vetapp)
+Applikationen findes i [vetapp](https://github.com/CK2800/dbd/tree/main/1/vetapp)
