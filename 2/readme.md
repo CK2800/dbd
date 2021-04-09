@@ -1,4 +1,4 @@
-# Task 1 - Inv01stigation
+# Task 1 - Investigation
 
 ## Hvorfor NoSQL databaser?
 
