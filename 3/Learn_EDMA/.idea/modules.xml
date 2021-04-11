@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EDMA_GENERATE/EDMA_GENERATE.iml" filepath="$PROJECT_DIR$/EDMA_GENERATE/EDMA_GENERATE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Learn_EDMA.iml" filepath="$PROJECT_DIR$/Learn_EDMA.iml" />
+    </modules>
+  </component>
+</project>

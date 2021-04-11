@@ -1,0 +1,29 @@
+ValueDomain MyInt : Integer[1..42] Constraints[isEven]
+
+// simple typer.
+ValueDomain JSONObject : String[1..MAX] // vi antager at object repræsenteres v. strenge.
+ValueDomain JSONString : String[MIN..MAX] // tomme strenge ok
+ValueDomain JSONNumber : Integer[MIN..MAX]
+ValueDomain JSONFloat : Float[MIN..MAX]
+ValueDomain JSONBoolean : Boolean
+ValueDomain JSONNull : String[4] Constraints[isNull]
+
+// JSON element typer
+ValueDomain ELEMENTKey : String[1..MAX]
+ValueDomain ELEMENTValue : OneOf<OBJECTS, JObject, JSONString, JSONNumber, JSONFloat, JSONBoolean, JSONNull>
+ValueDomain ELEMENTS : List<ELEMENT>
+ValueDomain OBJECTS : List<JObject>
+ValueDomain ELEMENT : Struct
+{
+    key : ELEMENTKey,
+    value : ELEMENTValue
+}
+
+// JSON object (parent)
+ValueDomain JObject : Struct
+{
+    elements : ELEMENTS
+}
+
+
+
