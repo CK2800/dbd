@@ -17,7 +17,7 @@
 
 1.  Indsæt data i sdm-databasen ved at køre scriptet i sdm_data.txt.
     Dette giver flg.:
-    ![graf.png](graf.png)
+    ![graf.PNG](graf.PNG)
 
 # Statistik forespørgsler
 
