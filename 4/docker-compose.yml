@@ -1,0 +1,183 @@
+version: "3"
+
+networks:
+  lan:
+
+services:
+  core1:
+    #image: neo4j:3.5-enterprise
+    image: neo4j:enterprise
+    networks:
+      - lan
+    ports:
+      - 7474:7474
+      - 6477:6477
+      - 7687:7687
+    volumes:
+      #- ./volume/core1/conf:/var/lib/neo4j/conf
+      - ./volume/core1/conf:/conf
+      - ./volume/plugins:/plugins
+      - ./volume/core1/data:/data
+      - ./volume/core1/import:/import
+      - ./volume/core1/logs:/logs
+    #      - $HOME/neo4j/neo4j-core1/conf:/conf
+    #      - $HOME/neo4j/neo4j-core1/data:/data
+    #      - $HOME/neo4j/neo4j-core1/logs:/logs
+    #      - $HOME/neo4j/neo4j-core1/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=none
+      #      - NEO4J_AUTH=neo4j/changeme
+      - NEO4J_dbms_mode=CORE
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_causal__clustering_minimum__core__cluster__size__at__formation=3
+      - NEO4J_causal__clustering_minimum__core__cluster__size__at__runtime=3
+      - NEO4J_causal__clustering_discovery__advertised__address=core1:5000
+      - NEO4J_causal__clustering_transaction__advertised__address=core1:6000
+      - NEO4J_causal__clustering_raft__advertised__address=core1:7000
+      - NEO4J_causal__clustering_initial__discovery__members=core1:5000,core2:5000,core3:5000
+      - NEO4J_dbms_connector_http_listen__address=:7474
+      - NEO4J_dbms_connector_https_listen__address=:6477
+      - NEO4J_dbms_connector_bolt_listen__address=:7687
+      - NEO4JLABS_PLUGINS=["graph-data-science"]
+
+  core2:
+    #image: neo4j:3.5-enterprise
+    image: neo4j:enterprise
+    networks:
+      - lan
+    ports:
+      - 7475:7475
+      - 6478:6478
+      - 7688:7688
+    volumes:
+      #- ./volume/core2/conf:/var/lib/neo4j/conf
+      - ./volume/core2/conf:/conf
+      - ./volume/plugins:/plugins
+      - ./volume/core2/data:/data
+      - ./volume/core2/import:/import
+      - ./volume/core2/logs:/logs
+    #      - $HOME/neo4j/neo4j-core2/conf:/conf
+    #      - $HOME/neo4j/neo4j-core2/data:/data
+    #      - $HOME/neo4j/neo4j-core2/logs:/logs
+    #      - $HOME/neo4j/neo4j-core1/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=none
+      #      - NEO4J_AUTH=neo4j/changeme
+      - NEO4J_dbms_mode=CORE
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_causal__clustering_minimum__core__cluster__size__at__formation=3
+      - NEO4J_causal__clustering_minimum__core__cluster__size__at__runtime=3
+      - NEO4J_causal__clustering_discovery__advertised__address=core2:5000
+      - NEO4J_causal__clustering_transaction__advertised__address=core2:6000
+      - NEO4J_causal__clustering_raft__advertised__address=core2:7000
+      - NEO4J_causal__clustering_initial__discovery__members=core1:5000,core2:5000,core3:5000
+      - NEO4J_dbms_connector_http_listen__address=:7475
+      - NEO4J_dbms_connector_https_listen__address=:6478
+      - NEO4J_dbms_connector_bolt_listen__address=:7688
+      - NEO4JLABS_PLUGINS=["graph-data-science"]
+
+  core3:
+    #image: neo4j:3.5-enterprise
+    image: neo4j:enterprise
+    networks:
+      - lan
+    ports:
+      - 7476:7476
+      - 6479:6479
+      - 7689:7689
+    volumes:
+      #- ./volume/core3/conf:/var/lib/neo4j/conf
+      - ./volume/core3/conf:/conf
+      - ./volume/plugins:/plugins
+      - ./volume/core3/data:/data
+      - ./volume/core3/import:/import
+      - ./volume/core3/logs:/logs
+    #      - $HOME/neo4j/neo4j-core3/conf:/conf
+    #      - $HOME/neo4j/neo4j-core3/data:/data
+    #      - $HOME/neo4j/neo4j-core3/logs:/logs
+    #      - $HOME/neo4j/neo4j-core1/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=none
+      #      - NEO4J_AUTH=neo4j/changeme
+      - NEO4J_dbms_mode=CORE
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_causal__clustering_minimum__core__cluster__size__at__formation=3
+      - NEO4J_causal__clustering_minimum__core__cluster__size__at__runtime=3
+      - NEO4J_causal__clustering_discovery__advertised__address=core3:5000
+      - NEO4J_causal__clustering_transaction__advertised__address=core3:6000
+      - NEO4J_causal__clustering_raft__advertised__address=core3:7000
+      - NEO4J_causal__clustering_initial__discovery__members=core1:5000,core2:5000,core3:5000
+      - NEO4J_dbms_connector_http_listen__address=:7476
+      - NEO4J_dbms_connector_https_listen__address=:6479
+      - NEO4J_dbms_connector_bolt_listen__address=:7689
+      - NEO4JLABS_PLUGINS=["graph-data-science"]
+
+  read1:
+    #image: neo4j:3.5-enterprise
+    image: neo4j:enterprise
+    networks:
+      - lan
+    ports:
+      - 7477:7477
+      - 6480:6480
+      - 7690:7690
+    volumes:
+      #- ./volume/read1/conf:/var/lib/neo4j/conf
+      - ./volume/read1/conf:/conf
+      - ./volume/plugins:/plugins
+      - ./volume/read1/data:/data
+      - ./volume/read1/import:/import
+      - ./volume/read1/logs:/logs
+    #      - $HOME/neo4j/neo4j-read1/conf:/conf
+    #      - $HOME/neo4j/neo4j-read1/data:/data
+    #      - $HOME/neo4j/neo4j-read1/logs:/logs
+    #      - $HOME/neo4j/neo4j-core1/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=none
+      #      - NEO4J_AUTH=neo4j/changeme
+      - NEO4J_dbms_mode=READ_REPLICA
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      - NEO4J_causal__clustering_discovery__advertised__address=read1:5000
+      - NEO4J_causal__clustering_transaction__advertised__address=read1:6000
+      - NEO4J_causal__clustering_raft__advertised__address=read1:7000
+      - NEO4J_causalClustering_initialDiscoveryMembers=core1:5000,core2:5000,core3:5000
+      - NEO4J_dbms_connector_http_listen__address=:7477
+      - NEO4J_dbms_connector_https_listen__address=:6480
+      - NEO4J_dbms_connector_bolt_listen__address=:7690
+      - NEO4JLABS_PLUGINS=["graph-data-science"]
+
+  # This core demonstrates that additional instances can be added after the initial core is established (ie: this instance is not listed within "initialDiscoveryMembers")
+  core4:
+    #image: neo4j:3.5-enterprise
+    image: neo4j:enterprise
+    networks:
+      - lan
+    ports:
+      - 7478:7478
+      - 6481:6481
+      - 7691:7691
+    volumes:
+      #- ./volume/core4/conf:/var/lib/neo4j/conf
+      - ./volume/core4/conf:/conf
+      - ./volume/plugins:/plugins
+      - ./volume/core4/data:/data
+      - ./volume/core4/import:/import
+      - ./volume/core4/logs:/logs
+    #      - $HOME/neo4j/neo4j-core4/conf:/conf
+    #      - $HOME/neo4j/neo4j-core4/data:/data
+    #      - $HOME/neo4j/neo4j-core4/logs:/logs
+    #      - $HOME/neo4j/neo4j-core1/plugins:/plugins
+    environment:
+      - NEO4J_AUTH=none
+      #      - NEO4J_AUTH=neo4j/changeme
+      - NEO4J_dbms_mode=CORE
+      - NEO4J_ACCEPT_LICENSE_AGREEMENT=yes
+      #      - NEO4J_causalClustering_expectedCoreClusterSize=3
+      - NEO4J_causal__clustering_discovery__advertised__address=core4:5000
+      - NEO4J_causal__clustering_transaction__advertised__address=core4:6000
+      - NEO4J_causal__clustering_raft__advertised__address=core4:7000
+      - NEO4J_causal__clustering_initial__discovery__members=core1:5000,core2:5000,core3:5000
+      - NEO4J_dbms_connector_http_listen__address=:7478
+      - NEO4J_dbms_connector_https_listen__address=:6481
+      - NEO4J_dbms_connector_bolt_listen__address=:7691
+      - NEO4JLABS_PLUGINS=["graph-data-science"]
