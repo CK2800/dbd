@@ -8,9 +8,9 @@
 
 2.  Åbn projektet, f.eks. i intellij.
 3.  Kør alle tests fra src/test/java folderen ved at højre-klikke og vælge 'run all tests'.
-4. Observer, at alle tests er grønne. 
+4.  Observer, at alle tests er grønne.
 
-   ![tests.png](tests.png)
+    ![Alle tests er grønne](./tests.png)
 
 ## Redis Data Model:
 
