@@ -10,7 +10,7 @@
 3.  Kør alle tests fra src/test/java folderen ved at højre-klikke og vælge 'run all tests'.
 4. Observer, at alle tests er grønne. 
 
-   !["tests.png"](tests.png)
+   ![tests.png](tests.png)
 
 ## Redis Data Model:
 
